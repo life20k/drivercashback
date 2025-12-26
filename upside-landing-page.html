@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get cash back on gas, groceries, and dining. Perfect for truckers, Uber drivers, and gig workers. Earn up to $600/year on purchases you're already making. Free app, instant cash back.">
+    <meta name="keywords" content="cash back on gas, fuel rewards, trucker savings, uber driver cash back, lyft driver savings, gig worker rewards, gas cash back app, grocery cash back, dining rewards, upside app">
+    <title>Get Cash Back on Gas, Groceries & Dining | Upside for Drivers</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section with Animation */
+        .hero {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #0066FF;
+            padding: 22px 55px;
+            font-size: 1.4em;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0,102,255,0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        .trust-badges {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            text-align: center;
+        }
+        
+        .trust-number {
+            font-size: 3em;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .trust-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        
+        /* Image Section */
+        .image-section {
+            background: #f8f9fa;
+            padding: 0;
+            position: relative;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .image-card {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+        }
+        
+        .image-overlay h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .image-overlay p {
+            font-size: 1.1em;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+        
+        h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0066FF;
+            font-weight: 900;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 60px;
+        }
+        
+        /* Benefits Grid */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0066FF, #00C853);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-icon {
+            font-size: 5em;
+            margin-bottom: 25px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator-section::before {
+            content: '💰';
+            position: absolute;
+            font-size: 400px;
+            opacity: 0.05;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+        
+        .calculator-box {
+            background: white;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .calc-input {
+            margin-bottom: 30px;
+        }
+        
+        .calc-input label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0066FF;
+            font-size: 1.2em;
+        }
+        
+        .calc-input input,
+        .calc-input select {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3em;
+            border: 3px solid #e9ecef;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .calc-input input:focus,
+        .calc-input select:focus {
+            outline: none;
+            border-color: #0066FF;
+            box-shadow: 0 0 0 5px rgba(0,102,255,0.1);
+            transform: scale(1.02);
+        }
+        
+        .calc-result {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,102,255,0.3);
+        }
+        
+        .calc-result-label {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+        
+        .calc-result .amount {
+            font-size: 4.5em;
+            font-weight: 900;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: countUp 0.5s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            border-left: 5px solid #0066FF;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+        
+        .stars {
+            color: #FFD700;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: #0066FF;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: #f8f9fa;
+        }
+        
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #0066FF;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 2em;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 30px 30px;
+            max-height: 500px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            padding: 120px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .final-cta h2 {
+            color: white;
+            font-size: 3.5em;
+            margin-bottom: 25px;
+        }
+        
+        .final-cta p {
+            font-size: 1.5em;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            margin: 10px 0;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3em;
+            }
+            
+            .trust-badges {
+                gap: 30px;
+            }
+            
+            .trust-number {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            .calc-result .amount {
+                font-size: 3em;
+            }
+            
+            .calculator-box {
+                padding: 30px 20px;
+            }
+            
+            .image-card {
+                height: 300px;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Cash Out Your Savings Anytime.</h1>
+            <p class="subtitle">See your total earnings grow on everyday purchases like gas and food</p>
+            <a href="https://cutt.ly/HrsDUAUK" class="cta-button">Download Free App →</a>
+            
+            <div class="trust-badges">
+                <div class="trust-item">
+                    <span class="trust-number">$1B+</span>
+                    <span class="trust-label">Cash Back Earned</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">⭐ 4.8</span>
+                    <span class="trust-label">550K Reviews</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">50K+</span>
+                    <span class="trust-label">Locations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Grid Section -->
+    <section class="image-section">
+        <div class="image-grid">
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop" alt="Person pumping gas">
+                <div class="image-overlay">
+                    <h3>Fuel Up, Get Paid</h3>
+                    <p>Save automatically on every gallon of gas you purchase</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop" alt="Pizza delivery">
+                <div class="image-overlay">
+                    <h3>Dine Out, Earn Rewards</h3>
+                    <p>Enjoy your favorite meals and automatically get cash back</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&auto=format&fit=crop" alt="Grocery shopping">
+                <div class="image-overlay">
+                    <h3>Earn When You Shop</h3>
+                    <p>Cash back earned seamlessly after you complete your purchase</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <div class="container">
+        <h2>Better. Faster. Smarter.</h2>
+        <p class="section-subtitle">Get paid for purchases you're already making</p>
+        
+        <div class="benefits">
+            <div class="benefit-card">
+                <span class="benefit-icon">⛽</span>
+                <h3>Cash Back on Gas</h3>
+                <p>Earn on every gallon at Shell, BP, Marathon, Circle K, Gulf, Sunoco and 50,000+ stations nationwide</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">🍕</span>
+                <h3>Dining Rewards</h3>
+                <p>Average 8% back at Domino's, Pizza Hut, Burger King, Taco Bell and thousands of local restaurants</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">🛒</span>
+                <h3>Grocery Savings</h3>
+                <p>Average 8% cash back on groceries at Giant Eagle, Schnucks, Giant and major grocery chains</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">💰</span>
+                <h3>Instant Cash Out</h3>
+                <p>Transfer to your bank account, PayPal, or gift cards anytime. No minimum balance required</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">🔄</span>
+                <h3>Stacks with Rewards</h3>
+                <p>Use on top of credit card rewards and fuel cards. Double-dip on every purchase</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">📱</span>
+                <h3>100% Automatic</h3>
+                <p>Claim offer, pay normally with your card. Cash back appears automatically</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 style="color: white;">Calculate Your Potential Earnings</h2>
+            <p class="section-subtitle" style="color: white; opacity: 0.9;">See how much you could earn based on your driving habits</p>
+            
+            <div class="calculator-box">
+                <div class="calc-input">
+                    <label>How many times do you fill up per week?</label>
+                    <input type="number" id="fillups" value="3" min="1" max="20">
+                </div>
+                
+                <div class="calc-input">
+                    <label>Average gallons per fill-up?</label>
+                    <input type="number" id="gallons" value="15" min="1" max="100">
+                </div>
+                
+                <div class="calc-input">
+                    <label>Expected cash back per gallon:</label>
+                    <select id="rate">
+                        <option value="0.25">$0.25/gallon (Best locations)</option>
+                        <option value="0.10">$0.10/gallon (Average)</option>
+                        <option value="0.05">$0.05/gallon (Conservative)</option>
+                    </select>
+                </div>
+                
+                <div class="calc-result">
+                    <div class="calc-result-label">Your Estimated Annual Earnings:</div>
+                    <div class="amount" id="result">$585</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <div class="container">
+        <h2>Real Drivers, Real Savings</h2>
+        <p class="section-subtitle">Over 550,000 five-star reviews from drivers just like you</p>
+        
+        <div class="testimonials">
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"I just transferred money to my bank account—just in time to buy a nice lunch for my family. With gas prices as high as they are, it's nice to get a little bit back."</p>
+                <div class="testimonial-author">— JKlosterman, Verified Driver</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Easy money back without a catch. I'm getting cash back on stuff I would've had to buy anyway. Upside gives you easy savings that you actually see!"</p>
+                <div class="testimonial-author">— alicejpark90, Verified User</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"If I could give a higher rating for this app I would. Most people already have to purchase gas, so why not get a discount while you're at it? I wish I would have found this application sooner."</p>
+                <div class="testimonial-author">— poodlelover822, Verified User</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Common Questions</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Is Upside really free?</div>
+                    <div class="faq-answer">Yes! Upside is 100% free to download and use. No hidden fees, no subscription charges. We make money by bringing customers to businesses, and you benefit from the savings.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I get my cash back?</div>
+                    <div class="faq-answer">Cash out anytime directly to your bank account, PayPal, or choose from dozens of gift cards. There's no minimum balance and transfers are instant or within 1-2 business days.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Does this work with my fuel card?</div>
+                    <div class="faq-answer">Yes! Upside works with your regular credit cards, debit cards, and fuel cards. You can stack cash back on top of your existing rewards programs.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How much can I really earn?</div>
+                    <div class="faq-answer">The average frequent user earns $290/year. Professional drivers who fill up 2-4 times per week typically earn $400-$600+ annually. Your earnings depend on how often you use the app.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Start Earning?</h2>
+        <p>Join over 1 million drivers getting cash back on purchases they're already making</p>
+        <a href="https://cutt.ly/HrsDUAUK" class="cta-button">Download Free App Now →</a>
+        <p style="margin-top: 30px; font-size: 1em;">Free to download • No credit card required • Cash out anytime</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Smart Driver Savings. This is an independent promotional page for the Upside app.</p>
+        <p style="margin-top: 10px;">Upside is a registered trademark of Upside Services, Inc. All earnings estimates are based on average user data and individual results may vary.</p>
+    </footer>
+
+    <script>
+        function updateCalculator() {
+            var fillups = Number(document.getElementById('fillups').value) || 3;
+            var gallons = Number(document.getElementById('gallons').value) || 15;
+            var rate = Number(document.getElementById('rate').value) || 0.25;
+            
+            var yearly = fillups * gallons * rate * 52;
+            var rounded = Math.round(yearly);
+            
+            document.getElementById('result').textContent = '$' + rounded;
+        }
+        
+        document.getElementById('fillups').addEventListener('input', updateCalculator);
+        document.getElementById('gallons').addEventListener('input', updateCalculator);
+        document.getElementById('rate').addEventListener('change', updateCalculator);
+        
+        updateCalculator();
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                var item = this.parentElement;
+                var wasActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(function(faq) {
+                    faq.classList.remove('active');
+                });
+                
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
