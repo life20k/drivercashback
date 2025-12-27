@@ -19,13 +19,22 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            background: #ffffff;
+        }
+        
+        /* Glassmorphism utility class */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         /* Hero Section with Animation */
         .hero {
             background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
             color: white;
-            padding: 100px 20px;
+            padding: 120px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -39,9 +48,25 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            top: -400px;
+            right: -400px;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         @keyframes pulse {
@@ -69,11 +94,16 @@
         }
         
         .hero h1 {
-            font-size: 4em;
+            font-size: 4.5em;
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.1;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero .subtitle {
@@ -138,6 +168,10 @@
             font-weight: 900;
             display: block;
             margin-bottom: 5px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffe0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .trust-label {
@@ -216,6 +250,22 @@
             margin-bottom: 20px;
             color: #0066FF;
             font-weight: 900;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #0066FF, #00C853);
+            border-radius: 2px;
         }
         
         .section-subtitle {
@@ -239,25 +289,43 @@
             border-radius: 25px;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0,102,255,0.1);
         }
         
         .benefit-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #0066FF, #00C853);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            background: linear-gradient(90deg, #0066FF, #00C853, #FFD700);
+            transition: left 0.6s ease;
+        }
+        
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,102,255,0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
         }
         
         .benefit-card:hover::before {
-            transform: scaleX(1);
+            left: 0;
+        }
+        
+        .benefit-card:hover::after {
+            width: 500px;
+            height: 500px;
         }
         
         .benefit-card:hover {
@@ -313,7 +381,9 @@
         }
         
         .calculator-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             max-width: 700px;
             margin: 0 auto;
             padding: 50px;
@@ -321,6 +391,7 @@
             box-shadow: 0 30px 80px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .calc-input {
@@ -351,7 +422,7 @@
         .calc-input select:focus {
             outline: none;
             border-color: #0066FF;
-            box-shadow: 0 0 0 5px rgba(0,102,255,0.1);
+            box-shadow: 0 0 0 5px rgba(0,102,255,0.1), 0 10px 30px rgba(0,102,255,0.2);
             transform: scale(1.02);
         }
         
@@ -398,12 +469,25 @@
             border-radius: 20px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.08);
             border-left: 5px solid #0066FF;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(0,102,255,0.05);
+            font-family: Georgia, serif;
+            line-height: 1;
         }
         
         .testimonial:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
         
         .stars {
@@ -606,7 +690,7 @@
     <section class="image-section">
         <div class="image-grid">
             <div class="image-card">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop" alt="Person pumping gas">
+                <img src="https://images.unsplash.com/photo-1545262810-77515befe149?w=800&auto=format&fit=crop" alt="Person pumping gas">
                 <div class="image-overlay">
                     <h3>Fuel Up, Get Paid</h3>
                     <p>Save automatically on every gallon of gas you purchase</p>
@@ -624,6 +708,65 @@
                 <div class="image-overlay">
                     <h3>Earn When You Shop</h3>
                     <p>Cash back earned seamlessly after you complete your purchase</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uber/Lyft & Gig Workers Section -->
+    <section style="background: #f8f9fa; padding: 100px 20px;">
+        <div class="container">
+            <h2>Perfect for Uber, Lyft & Gig Workers</h2>
+            <p class="section-subtitle">Turn your biggest business expense into automatic savings</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
+                <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4em; margin-bottom: 20px;">🚗</div>
+                    <h3 style="color: #0066FF; font-size: 1.8em; margin-bottom: 15px; font-weight: 700;">Uber & Lyft Drivers</h3>
+                    <p style="color: #666; font-size: 1.1em; line-height: 1.7; margin-bottom: 20px;">Filling up 3-4 times per week? That's <strong>$400-600/year</strong> back in your pocket. Stack with your Uber Pro rewards for maximum earnings.</p>
+                    <ul style="text-align: left; color: #666; line-height: 2; list-style: none; padding: 0;">
+                        <li style="padding-left: 30px; position: relative;">✓ Works between rides</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Quick meal cash back</li>
+                        <li style="padding-left: 30px; position: relative;">✓ No interruption to driving</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Cash out instantly</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4em; margin-bottom: 20px;">📦</div>
+                    <h3 style="color: #0066FF; font-size: 1.8em; margin-bottom: 15px; font-weight: 700;">DoorDash & Delivery Drivers</h3>
+                    <p style="color: #666; font-size: 1.1em; line-height: 1.7; margin-bottom: 20px;">Making 20-30 deliveries per day? Get cash back on <strong>every tank AND every meal</strong> you grab between orders. Average $300-500/year.</p>
+                    <ul style="text-align: left; color: #666; line-height: 2; list-style: none; padding: 0;">
+                        <li style="padding-left: 30px; position: relative;">✓ Gas cash back</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Restaurant rewards</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Quick grocery runs</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Multi-app friendly</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 4em; margin-bottom: 20px;">🚛</div>
+                    <h3 style="color: #0066FF; font-size: 1.8em; margin-bottom: 15px; font-weight: 700;">Truck Drivers & Fleet Owners</h3>
+                    <p style="color: #666; font-size: 1.1em; line-height: 1.7; margin-bottom: 20px;">Filling 100+ gallons per trip? <strong>$25-50 cash back per fill-up.</strong> Works with your fuel card. Owner-operators save $1,000+/year.</p>
+                    <ul style="text-align: left; color: #666; line-height: 2; list-style: none; padding: 0;">
+                        <li style="padding-left: 30px; position: relative;">✓ Major truck stops</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Diesel included</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Route-based offers</li>
+                        <li style="padding-left: 30px; position: relative;">✓ Fleet friendly</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 30px rgba(0,0,0,0.08);">
+                <h3 style="color: #0066FF; font-size: 2em; margin-bottom: 20px;">Also Perfect For:</h3>
+                <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 1.2em; color: #666;">
+                    <span>✓ Instacart Shoppers</span>
+                    <span>✓ Amazon Flex</span>
+                    <span>✓ Grubhub Drivers</span>
+                    <span>✓ Uber Eats</span>
+                    <span>✓ Postmates</span>
+                    <span>✓ Shipt</span>
+                    <span>✓ Roadie</span>
                 </div>
             </div>
         </div>
@@ -732,6 +875,41 @@
             </div>
         </div>
     </div>
+
+    <!-- Referral Bonus Section -->
+    <section style="background: linear-gradient(135deg, #00C853 0%, #00A843 100%); padding: 100px 20px; color: white;">
+        <div class="container">
+            <h2 style="color: white;">Invite Friends, Unlock 3 Bonuses!</h2>
+            <p class="section-subtitle" style="color: white; opacity: 0.95;">Share Upside with fellow drivers and you both earn extra cash back</p>
+            
+            <div style="background: white; border-radius: 30px; padding: 60px 40px; margin-top: 50px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2.5em;">⛽</div>
+                        <h3 style="color: #0066FF; font-size: 1.5em; margin-bottom: 10px;">15¢/gal Extra</h3>
+                        <p style="color: #666; font-size: 1.1em;">On 1 gas purchase after your friend signs up</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2.5em;">🛒</div>
+                        <h3 style="color: #0066FF; font-size: 1.5em; margin-bottom: 10px;">10% Extra</h3>
+                        <p style="color: #666; font-size: 1.1em;">On 1 restaurant or grocery purchase</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2.5em;">💵</div>
+                        <h3 style="color: #0066FF; font-size: 1.5em; margin-bottom: 10px;">Instant 10¢</h3>
+                        <p style="color: #666; font-size: 1.1em;">Every time your friend uses Upside</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px; padding-top: 40px; border-top: 2px solid #e9ecef;">
+                    <p style="color: #0066FF; font-size: 1.3em; font-weight: 700; margin-bottom: 20px;">🎁 Plus: Your friend gets the same bonuses!</p>
+                    <a href="https://cutt.ly/HrsDUAUK" class="cta-button">Get Started & Share →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ Section -->
     <section class="faq-section">
